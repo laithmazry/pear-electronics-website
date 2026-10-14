@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Pear Electronics - Best Electronics in the Market">
+    <meta name="keywords" content="electronics, laptops, phones, tablets, Pear Electronics">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pear Electronics | Home</title>
+
+    <link rel="icon" type="image/x-icon" href="images/newlogo1.png">
+    <link rel="stylesheet" href="css/style.css">
+	<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+<script src="Commerical.js"></script>
+
+<script>
+var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+function init() {
+	canvas = document.getElementById("canvas");
+	anim_container = document.getElementById("animation_container");
+	dom_overlay_container = document.getElementById("dom_overlay_container");
+	var comp=AdobeAn.getComposition("179D6829690143F4AE6305735BE0D219");
+	var lib=comp.getLibrary();
+	var loader = new createjs.LoadQueue(false);
+	loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
+	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
+	var lib=comp.getLibrary();
+	loader.loadManifest(lib.properties.manifest);
+}
+function handleFileLoad(evt, comp) {
+	var images=comp.getImages();	
+	if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
+}
+function handleComplete(evt,comp) {
+	var lib=comp.getLibrary();
+	var ss=comp.getSpriteSheet();
+	var queue = evt.target;
+	var ssMetadata = lib.ssMetadata;
+	for(i=0; i<ssMetadata.length; i++) {
+		ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+	}
+	exportRoot = new lib.Commerical();
+	stage = new lib.Stage(canvas);
+	stage.enableMouseOver();	
+	fnStartAnimation = function() {
+		stage.addChild(exportRoot);
+		createjs.Ticker.framerate = lib.properties.fps;
+		createjs.Ticker.addEventListener("tick", stage);
+	}	    
+	AdobeAn.makeResponsive(false,'both',false,1,[canvas,anim_container,dom_overlay_container]);	
+	AdobeAn.compositionLoaded(lib.properties.id);
+	fnStartAnimation();
+}
+</script>
+</head>
+	
+
+<body onload="init();">
+
+    <!-- Skip Link -->
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+
+    <!-- Header -->
+    <header>
+
+        <div class="logo">
+
+          <a href="index.html">
+
+                <img src="images/newlogo1.png"
+                     alt="Pear Electronics Logo"
+>
+
+            </a>
+
+        </div>
+
+        <div class="title">
+
+            <h1>Pear Electronics</h1>
+
+            <p>Best Electronics in the Market!</p>
+
+        </div>
+
+    </header>
+
+    <!-- Navigation -->
+
+<nav id="navbar">
+
+    <button id="menu-toggle" class="menu-toggle">
+        &#9776;
+    </button>
+
+    <ul id="menu">
+
+        <li><a href="index.html">Home</a></li>
+
+        <li><a href="products.html">Products</a></li>
+
+        <li><a href="services.html">Services</a></li>
+
+        <li><a href="aboutus.html">About Us</a></li>
+
+        <li><a href="contactus.html">Contact Us</a></li>
+
+        <li><a href="sitemap.html">Site Map</a></li>
+
+    </ul>
+
+</nav>
+
+    <!-- Main -->
+
+<main id="main-content">
+
+        <!-- Hero -->
+
+        <section class="hero">
+
+            
+
+            <h2>Welcome to Pear Electronics</h2>
+
+            <p>
+
+                Pear Electronics offers the newest laptops,
+                smartphones, tablets, and accessories at affordable prices.
+                Our goal is to provide customers with high-quality
+                technology and excellent customer service.
+
+            </p>
+
+            <a class="button" href="products.html">
+
+                Shop Now
+
+            </a>
+
+        </section>
+
+        <!-- Featured Products -->
+
+        <section>
+
+            <h2>Featured Products</h2>
+
+          <div class="products">
+
+                <article>
+
+                    <img src="images/computer1.png"
+                         alt="Pear Laptop - AI-created image created using ChatGPT (OpenAI).">
+
+                    <h3>Pear Laptop</h3>
+
+                    <p>
+                        High-performance laptop designed
+                        for work and gaming.
+                    </p>
+					<p class="image-source">
+    					<strong>Source:</strong> AI-generated image created using ChatGPT (OpenAI).
+					</p>
+
+                </article>
+
+                <article>
+
+                    <img src="images/pearphone.png"
+                         alt="Pear Phone - AI-created image created using ChatGPT (OpenAI).">
+
+                    <h3>Pear Phone</h3>
+
+                    <p>
+
+                        Powerful smartphone with
+                        exceptional camera quality.
+
+                    </p>
+					<p class="image-source">
+    					<strong>Source:</strong> AI-generated image created using ChatGPT (OpenAI).
+					</p>
+
+              </article>
+
+                <article>
+
+                  <img src="images/pearpad.png"
+                         alt="Pear Pad - AI-created image created using ChatGPT (OpenAI).">
+
+                  <h3>Pear Pad</h3>
+
+                    <p>
+
+                        Lightweight tablet perfect
+                        for school and entertainment.
+
+                    </p>
+					<p class="image-source">
+   						 <strong>Source:</strong> AI-generated image created using ChatGPT (OpenAI).
+					</p>
+					
+
+                </article>
+
+            </div>
+
+            <p style="text-align:center; margin-top:20px;">
+
+                Check out our <a href="products.html">full product lineup</a>
+                or see our current <a href="promotions.html">promotions and deals</a>.
+
+            </p>
+
+        </section>
+
+        <!-- Animation -->
+
+        <section>
+
+    <h2>Commercial</h2>
+
+<div id="animation_container"
+     style="background-color:rgba(0,0,102,1);
+            width:800px;
+            height:600px;
+            margin:0 auto;
+            position:relative;">
+
+    <canvas id="canvas"
+            width="800"
+            height="600"
+            style="position:absolute;
+                   left:0;
+                   top:0;
+                   display:block;
+                   background-color:rgba(0,0,102,1);">
+    </canvas>
+
+    <div id="dom_overlay_container"
+         style="pointer-events:none;
+                overflow:hidden;
+                width:800px;
+                height:600px;
+                position:absolute;
+                left:0;
+                top:0;
+                display:block;">
+    </div>
+
+</div>
+
+</section>
+
+ 
+
+        <!-- Disclaimer -->
+
+        <section>
+
+            <div class="disclaimer">
+
+                <strong>Disclaimer:</strong>
+              This website has been created for educational purposes only.
+                Pear Electronics is NOT a real company, Certain materials included on this website are used under the Fair Use
+        exemption of the U.S. Copyright Law and have been prepared according to
+        multimedia fair use guidelines. These materials are restricted from further use.
+				&nbsp;|&nbsp;
+				Graphic sources:
+				All images were AI-created image created using ChatGPT (OpenAI).
+			</div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+
+            © 2026 Pear Electronics. All Rights Reserved.
+
+        </p>
+
+        <p>
+
+            Address: 4400 University Dr, Fairfax, VA &nbsp;|&nbsp;
+            Email: pearelectronics@gmail.com &nbsp;|&nbsp;
+            Phone: (123) 456-7890
+
+        </p>
+
+        <p>
+
+            <strong>Disclaimer:</strong>
+          This website was created for educational purposes only.
+            Pear Electronics is a fake company developed for my George Mason University IT213 class.
+			All images were AI-created images created using ChatGPT (OpenAI).
+
+      </p>
+
+    </footer>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
