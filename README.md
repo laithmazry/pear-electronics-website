@@ -21,7 +21,7 @@ Pear Electronics is a fictional electronics company website designed to demonstr
 - Contact and site map pages
 
 ## Live Website
-https://mason.gmu.edu/~lmazraaw/pearsite2/
+https://mason.gmu.edu/~lmazraaw/pearsite/
 
 ## Author
 Developed as an academic project at George Mason University.
